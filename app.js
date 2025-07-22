@@ -1,6 +1,9 @@
 const express = require('express');
 
 const app = express();
+const authorRouter = require('./routes/authorRouter');
+
+app.use('/authors', authorRouter); // Use the authorRouter for routes starting with /authors
 
 //Route
 app.get('/', (req, res) => {
