@@ -3,9 +3,15 @@ const express = require('express');
 const app = express();
 
 //Route
-app.get('/', (req, res) => {
+/* app.get('/', (req, res) => {
   // Can only use res.send() once per request
   res.send('Hello, World!!');
+}); */
+
+//Route with a parameter, {*whatever} if I want a placeholder for any value
+app.get('/:username/', (req, res) => {
+  console.log(req.params); // { username: 'dylan' }
+  res.send(`Hello, ${req.params.username}!`);
 });
 
 const PORT = process.env.PORT || 3000;
