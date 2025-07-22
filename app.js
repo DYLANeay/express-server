@@ -2,9 +2,10 @@ const express = require('express');
 
 const app = express();
 
-//route
+//Route
 app.get('/', (req, res) => {
-  res.send('Hello, World!');
+  // Can only use res.send() once per request
+  res.send('Hello, World!!');
 });
 
 const PORT = process.env.PORT || 3000;
