@@ -1,4 +1,5 @@
 const express = require('express');
+const CustomNotFoundError = require('./errors/CustomNotFoundError');
 
 const app = express();
 const authorRouter = require('./routes/authorRouter');
@@ -18,9 +19,9 @@ app.get('/:username/', (req, res) => {
   res.send(`Hello, ${req.params.username}!`);
 });
 
+// Place this before the error handler
 app.use((req, res, next) => {
-  throw new Error('OH NO!');
-  // or next(new Error("OH NO!"));
+  next(new CustomNotFoundError('Route not found'));
 });
 
 app.use((err, req, res, next) => {
